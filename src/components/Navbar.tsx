@@ -14,12 +14,19 @@ const navItems = [
   { name: 'Contact', path: '/contact' },
 ];
 
-const socialItems = [
+type SocialItem = {
+  icon: React.ElementType;
+  url: string;
+  label: string;
+};
+
+const socialItems: SocialItem[] = [
   { icon: FaGithub, url: 'https://github.com/matthewOn2003', label: 'GitHub' },
   { icon: FaLinkedin, url: 'https://linkedin.com/in/on-wu-xu', label: 'LinkedIn' },
   { icon: FaWhatsapp, url: 'https://wa.me/601111135229', label: 'WhatsApp' },
   { icon: FaEnvelope, url: "mailto:onwuxu@gmail.com?subject=Let's%20Work%20Together", label: 'Email' },
 ];
+
 
 export default function Navbar() {
   const pathname = usePathname();
