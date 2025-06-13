@@ -32,10 +32,10 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 px-6 py-16">
+    <div className="min-h-screen bg-white text-gray-900 px-6 py-16">
       <header className="max-w-3xl mx-auto text-center mb-16">
-        <h1 className="text-5xl font-extrabold mb-4">Projects</h1>
-        <p className="text-lg text-gray-600">
+        <h1 className="text-5xl font-extrabold text-red-600 mb-4">Projects</h1>
+        <p className="text-lg text-gray-700">
           A curated selection of systems I’ve built — from business dashboards to public platforms.
         </p>
       </header>
@@ -45,11 +45,11 @@ export default function ProjectsPage() {
           <Link
             key={path}
             href={path}
-            className="block rounded-2xl bg-white p-6 shadow-sm transition hover:shadow-md hover:ring-1 hover:ring-orange-500"
+            className="block rounded-2xl bg-red-50 border border-red-200 p-6 shadow-sm transition hover:shadow-md hover:ring-1 hover:ring-red-500"
           >
-            <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-            <p className="text-gray-600 mb-4">{description}</p>
-            <span className="text-orange-600 font-medium hover:underline">
+            <h2 className="text-2xl font-semibold text-red-700 mb-2">{title}</h2>
+            <p className="text-gray-700 mb-4">{description}</p>
+            <span className="text-red-600 font-medium hover:underline">
               View Details →
             </span>
           </Link>

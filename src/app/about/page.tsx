@@ -3,61 +3,64 @@
 import Image from 'next/image';
 
 const skills = [
-  'HTML', 'CSS', 'JavaScript', 'TypeScript',
-  'React', 'Next.js', 'Tailwind', 'Prisma',
+  'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Angular.js', 'Next.js', 'Axios', 'Bootstrap', 'TailwindCSS', 'Redux', 'npm',
+  'Java', 'Spring Boot', 'Spring', 'Node.js', 'SQL', 'JUnit5', 'Mockito', 'Oracle', 'Kafka', 'Docker', 'Kubernetes', 'OpenShift',
+  'Git', 'Maven', 'Postman', 'Jenkins', 'REST APIs'
 ];
 
 const experience = [
   {
-    year: '2025',
-    role: 'Front-End Developer',
-    company: 'Aurient Studio',
-    desc: 'Building portfolio & demo apps with Next.js & Tailwind.',
+    year: 'Nov 2024 ~ June 2025',
+    role: 'Software Engineer',
+    company: 'Worldline International',
+    desc: '- Carried out batch development of the backend system for the card issuance module to ensure that the logic and output met the requirements of the development documentation. \n- Maintained the Angular.js GUI of the enterprise payment system to ensure that the data could be displayed normally.\n- Used JUnit, Mockito and PowerMockito to unit test the program code to ensure 100% test coverage to meet the software quality requirements of Sonarqube.\n- Performed end-to-end testing of the ISO8583 message flow of the SRS system and debugged the routing component to ensure consistency and integrity during data transmission.'
   },
   {
-    year: '2024',
-    role: 'Back-End Engineer',
-    company: 'Financial Corp',
-    desc: 'Developed payment system features with Node.js.',
+    year: 'Feb 2024 ~ May 2024',
+    role: 'Quality Assurance Intern',
+    company: 'Goldsoft Sdn. Bhd.',
+    desc: '- Test the form functions of different modules of the ERP backend and adjust the report layout to ensure data integrity. \n- Inspect the differences between the customized Java ERP system and the customer\'s existing Oracle ERP system to ensure consistency during system development. \n- Record any errors and exceptions encountered during quality testing and continue to work with the R&D team to ensure the high quality of the system.',
   },
   {
-    year: '2023',
+    year: 'Sept 2022 ~ Sept 2024',
     role: 'IT Graduate',
-    company: 'University of XYZ',
-    desc: 'Completed BSc in Information Technology.',
+    company: 'New Era University College',
+    desc: 'Completed Diploma in Computer Science.\nRelevant Courses: Database, Java, Android, C++, System Design, Data Structure & Algorithm, Networking',
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 px-6 py-16">
+    <div className="min-h-screen bg-white text-gray-900 px-6 py-16">
       <section className="max-w-3xl mx-auto space-y-16">
         {/* Header */}
         <header className="text-center space-y-2">
-          <h1 className="text-5xl font-extrabold">About Me</h1>
-          <p className="text-lg text-gray-600">
-            Hi, I’m Matt — a builder of clean, user-friendly web experiences.
+          <h1 className="text-5xl font-extrabold text-red-600">About Me</h1>
+          <p className="text-lg text-gray-700">
+            Hi, I’m Matthew — a builder of clean, user-friendly web experiences.
           </p>
         </header>
 
         {/* Profile */}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-          <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-            <Image
-              src="/profile-placeholder.jpg"
-              alt="Matt Profile"
-              width={160}
-              height={160}
-              className="object-cover"
-            />
+        <div className="flex flex-col items-center md:flex-row md:items-start gap-8">
+          <div className="flex justify-center w-full md:w-auto">
+            <div className="w-60 h-60 bg-gray-100 rounded-full overflow-hidden border-4 border-red-100 shadow-md relative">
+              <Image
+                src="/avatar.png"
+                alt="Matt Profile"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
-          <div className="space-y-4">
-            <p className="leading-relaxed text-gray-700">
-              I graduated with a degree in IT and have experience building backend systems for
+
+          <div className="space-y-4 max-w-prose text-center md:text-left">
+            <p className="leading-relaxed text-gray-800">
+              I graduated with a diploma in computer science and working experience in building backend systems for
               financial payment platforms. Now I focus on crafting intuitive front-end interfaces
-              and small full-stack tools that solve real-world problems.
+              and full-stack systems that solve real-world problems.
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed text-gray-800">
               My strengths include system thinking, minimalist design, and a passion for practical
               solutions. I believe in code that’s as clean as the interfaces it powers.
             </p>
@@ -66,12 +69,12 @@ export default function AboutPage() {
 
         {/* Skills */}
         <section>
-          <h2 className="text-3xl font-semibold mb-6">Skills & Tools</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-red-600">Skills & Tools</h2>
           <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {skills.map((skill) => (
               <li
                 key={skill}
-                className="px-4 py-2 bg-white rounded-lg shadow-sm text-center font-medium"
+                className="px-4 py-2 bg-red-50 text-red-800 rounded-lg shadow-sm text-center font-medium border border-red-200"
               >
                 {skill}
               </li>
@@ -81,17 +84,21 @@ export default function AboutPage() {
 
         {/* Experience */}
         <section>
-          <h2 className="text-3xl font-semibold mb-6">Experience</h2>
-          <ol className="relative border-l-2 border-gray-300 pl-6 space-y-6">
+          <h2 className="text-3xl font-semibold mb-6 text-red-600">Experience</h2>
+          <ol className="relative border-l-2 border-red-200 pl-6 space-y-6">
             {experience.map(({ year, role, company, desc }) => (
               <li key={year} className="relative">
-                <span className="absolute -left-4 top-1 w-3 h-3 bg-orange-500 rounded-full" />
+                <span className="absolute -left-4 top-1 w-3 h-3 bg-red-500 rounded-full shadow-sm" />
                 <div className="space-y-1">
-                  <p className="text-lg font-semibold">
+                  <p className="text-lg font-semibold text-gray-900">
                     {year} &mdash; {role}
                   </p>
                   <p className="text-sm text-gray-600">{company}</p>
-                  <p className="text-gray-700">{desc}</p>
+                  {desc.split('\n').map((line, i) => (
+                    <p key={i} className="text-gray-800">
+                      {line}
+                    </p>
+                  ))}
                 </div>
               </li>
             ))}

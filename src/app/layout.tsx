@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const dancing = Dancing_Script({ subsets: ['latin'], weight: '400', variable: '--font-dancing' })
 
 export const metadata = {
-  title: 'Matt Tan | Portfolio',
-  description: 'Personal portfolio of Matt Tan, web developer',
+  title: 'Matthew On | Portfolio',
+  description: 'Personal portfolio of Matthew On, Software Engineer',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
