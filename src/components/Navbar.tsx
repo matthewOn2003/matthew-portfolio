@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 'use client';
 
 import Link from 'next/link';
@@ -6,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Bars3Icon, XMarkIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from 'react-icons/fa6';
+import { IconType } from 'react-icons';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -15,7 +15,7 @@ const navItems = [
 ];
 
 type SocialItem = {
-  icon: React.ElementType;
+  icon: IconType;
   url: string;
   label: string;
 };
@@ -26,7 +26,6 @@ const socialItems: SocialItem[] = [
   { icon: FaWhatsapp, url: 'https://wa.me/601111135229', label: 'WhatsApp' },
   { icon: FaEnvelope, url: "mailto:onwuxu@gmail.com?subject=Let's%20Work%20Together", label: 'Email' },
 ];
-
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -51,8 +50,8 @@ export default function Navbar() {
                   key={path}
                   href={path}
                   className={`relative px-3 py-1 rounded text-sm font-medium transition-colors duration-200 ${isActive
-                    ? 'bg-white text-red-600'
-                    : 'text-white hover:bg-white hover:text-red-600'
+                      ? 'bg-white text-red-600'
+                      : 'text-white hover:bg-white hover:text-red-600'
                     }`}
                 >
                   {name}
@@ -63,18 +62,21 @@ export default function Navbar() {
 
           {/* Social icons */}
           <div className="flex items-center space-x-4">
-            {socialItems.map(({ icon: Icon, url, label }) => (
-              <a
-                key={label}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1 text-white hover:text-red-300 transition"
-                aria-label={label}
-              >
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
+            {socialItems.map(({ icon, url, label }) => {
+              const IconComponent = icon as React.FC<{ className?: string }>;
+              return (
+                <a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1 text-white hover:text-red-300 transition"
+                  aria-label={label}
+                >
+                  <IconComponent className="w-5 h-5" />
+                </a>
+              );
+            })}
             {/* Resume download */}
             <a
               href="/resume.pdf"
@@ -109,8 +111,8 @@ export default function Navbar() {
                     href={path}
                     onClick={() => setIsOpen(false)}
                     className={`block px-4 py-2 text-sm font-medium rounded transition-colors duration-200 ${isActive
-                      ? 'bg-white text-red-600'
-                      : 'text-white hover:bg-white hover:text-red-600'
+                        ? 'bg-white text-red-600'
+                        : 'text-white hover:bg-white hover:text-red-600'
                       }`}
                   >
                     {name}
@@ -120,18 +122,21 @@ export default function Navbar() {
             })}
             <li className="border-t border-red-500 mt-2 pt-2">
               <div className="flex flex-col space-y-2 px-4">
-                {socialItems.map(({ icon: Icon, url, label }) => (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-white hover:text-red-300 transition"
-                  >
-                    <Icon className="w-5 h-5" />
-                    {label}
-                  </a>
-                ))}
+                {socialItems.map(({ icon, url, label }) => {
+                  const IconComponent = icon as React.FC<{ className?: string }>;
+                  return (
+                    <a
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-white hover:text-red-300 transition"
+                    >
+                      <IconComponent className="w-5 h-5" />
+                      {label}
+                    </a>
+                  );
+                })}
                 <a
                   href="/resume.pdf"
                   download

@@ -1,11 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
+import {
+  FaGithub,
+  FaLinkedin,
+  FaWhatsapp,
+  FaEnvelope,
+} from 'react-icons/fa';
+import type { SVGProps } from 'react';
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+
+  // 强制将图标组件转换为 React 函数组件，确保返回类型符合 JSX.Element
+  const GithubIcon = FaGithub as React.FC<SVGProps<SVGSVGElement>>;
+  const LinkedinIcon = FaLinkedin as React.FC<SVGProps<SVGSVGElement>>;
+  const WhatsappIcon = FaWhatsapp as React.FC<SVGProps<SVGSVGElement>>;
+  const EnvelopeIcon = FaEnvelope as React.FC<SVGProps<SVGSVGElement>>;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -50,7 +62,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaIcons.FaGithub /> GitHub
+              <GithubIcon className="w-5 h-5" /> GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/on-wu-xu/"
@@ -58,7 +70,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaIcons.FaLinkedin /> LinkedIn
+              <LinkedinIcon className="w-5 h-5" /> LinkedIn
             </a>
             <a
               href="https://wa.me/601111135229"
@@ -66,13 +78,13 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaIcons.FaWhatsapp /> +6011-11135229
+              <WhatsappIcon className="w-5 h-5" /> +6011-11135229
             </a>
             <a
-              href="mailto:onwuxu@e=gmail.com?subject=Let's%20Work%20Together"
+              href="mailto:onwuxu@gmail.com?subject=Let's%20Work%20Together"
               className="flex items-center gap-3 text-gray-700 hover:text-orange-600 transition"
             >
-              <FaIcons.FaEnvelope /> onwuxu@gmail.com
+              <EnvelopeIcon className="w-5 h-5" /> onwuxu@gmail.com
             </a>
           </div>
         </div>
@@ -125,13 +137,12 @@ export default function ContactPage() {
               type="submit"
               disabled={submitted}
               className={`w-full py-3 font-semibold rounded-lg shadow transition ${submitted
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-orange-600 hover:bg-orange-700 text-white'
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-orange-600 hover:bg-orange-700 text-white'
                 }`}
             >
               {submitted ? 'Message Sent ✓' : 'Send Message'}
             </button>
-
           </form>
         </div>
       </div>
