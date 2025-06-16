@@ -14,9 +14,9 @@ const projects = [
     path: '/projects/inventory-tracker',
   },
   {
-    title: 'Multi-store Admin',
+    title: 'Store Hub (Multi-store Admin)',
     description: 'Centralized dashboard for managing multiple e-commerce stores.',
-    path: '/projects/multi-store-admin',
+    path: 'https://store-hub-app.vercel.app/',
   },
   {
     title: 'Course Marketplace',
