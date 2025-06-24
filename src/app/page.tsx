@@ -2,6 +2,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+
+const isExternal = (url: string) => url.startsWith('http');
+
+
+const projects = [
+  {
+    title: 'Store Hub',
+    description: 'A full-stack e-commerce platform inspired by Shopee, where customers can shop and vendors can manage their own stores.',
+    path: 'https://store-hub-app.vercel.app/',
+  },
+  {
+    title: 'Cinema Website',
+    description: 'A mock GSC-like cinema website for booking a movie tickets and food. Browsing now showing movies, schedules, and ticket information.',
+    path: 'https://github.com/matthewOn2003/My-Projects/tree/main/Projects/Project_Cinema%20Website',
+  },
+  {
+    title: 'HR Management Program',
+    description: 'A Java-based HR program allowing both admin and employees to log in and perform HR-related tasks in a simulated environment.',
+    path: 'https://github.com/matthewOn2003/hrms-program',
+  }
+];
+
+
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -13,32 +37,51 @@ export default function HomePage() {
         <p className="mt-4 text-lg max-w-2xl">
           A software engineer turning backend experience into clean, modern frontend apps—especially for SaaS and e‑commerce.
         </p>
-        <Link
-          href="/projects"
-          className="mt-8 inline-block px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition"
-        >
-          View My Work
-        </Link>
+
       </section>
 
       <main className="py-16 px-6 max-w-5xl mx-auto space-y-20">
         {/* Featured Projects */}
         <section>
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-red-600">Featured Projects</h2>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {['A', 'B', 'C'].map((name) => (
-              <div
-                key={name}
-                className="bg-white border border-red-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition"
-              >
-                <div className="h-40 bg-gray-100 rounded-md mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Project {name}</h3>
-                <p className="text-gray-600">
-                  A brief description of Project {name} goes here.
-                </p>
-              </div>
-            ))}
+            {projects.map(({ title, description, path }) => {
+              const content = (
+                <div className="bg-white border border-red-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition h-full">
+                  {/* <div className="h-40 bg-gray-100 rounded-md mb-4" /> */}
+                  <h3 className="text-xl font-semibold mb-2 text-red-700">{title}</h3>
+                  <p className="text-gray-700">{description}</p>
+                </div>
+              );
+
+              return isExternal(path) ? (
+                <a
+                  key={title}
+                  href={path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:no-underline"
+                >
+                  {content}
+                </a>
+              ) : (
+                <Link key={title} href={path} className="block hover:no-underline">
+                  {content}
+                </Link>
+              );
+            })}
+
           </div>
+          <div className='text-center'>
+            <Link
+              href="/projects"
+              className="mt-8 inline-block px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition"
+            >
+              View More &gt; &gt;
+            </Link>
+
+          </div>
+
         </section>
 
         {/* About Preview */}

@@ -1,11 +1,46 @@
-// src/app/about/page.tsx
+'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 
 const skills = [
-  'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Angular.js', 'Next.js', 'Axios', 'Bootstrap', 'TailwindCSS', 'Redux', 'npm',
-  'Java', 'Spring Boot', 'Spring', 'Node.js', 'SQL', 'JUnit5', 'Mockito', 'Oracle', 'Kafka', 'Docker', 'Kubernetes', 'OpenShift',
-  'Git', 'Maven', 'Postman', 'Jenkins', 'REST APIs'
+  // Frontend
+  { key: 'html', name: 'HTML', category: 'Frontend' },
+  { key: 'css', name: 'CSS', category: 'Frontend' },
+  { key: 'javascript', name: 'JavaScript', category: 'Frontend' },
+  { key: 'typescript', name: 'TypeScript', category: 'Frontend' },
+  { key: 'react-js', name: 'React.js', category: 'Frontend' },
+  { key: 'angular-js', name: 'Angular.js', category: 'Frontend' },
+  { key: 'vue-js', name: 'Vue.js', category: 'Frontend' },
+  { key: 'next-js', name: 'Next.js', category: 'Frontend' },
+  { key: 'bootstrap', name: 'Bootstrap', category: 'Frontend' },
+  { key: 'tailwindcss', name: 'TailwindCSS', category: 'Frontend' },
+  { key: 'redux', name: 'Redux', category: 'Frontend' },
+  { key: 'axios', name: 'Axios', category: 'Frontend' },
+
+  // Backend
+  { key: 'java', name: 'Java', category: 'Backend' },
+  { key: 'spring-boot', name: 'Spring Boot', category: 'Backend' },
+  { key: 'spring', name: 'Spring', category: 'Backend' },
+  { key: 'node-js', name: 'Node.js', category: 'Backend' },
+  { key: 'sql', name: 'SQL', category: 'Backend' },
+  { key: 'oracle', name: 'Oracle', category: 'Backend' },
+  { key: 'kafka', name: 'Kafka', category: 'Backend' },
+  { key: 'rest-apis', name: 'REST APIs', category: 'Backend' },
+
+  // DevOps
+  { key: 'docker', name: 'Docker', category: 'DevOps' },
+  { key: 'kubernetes', name: 'Kubernetes', category: 'DevOps' },
+  { key: 'openshift', name: 'OpenShift', category: 'DevOps' },
+  { key: 'jenkins', name: 'Jenkins', category: 'DevOps' },
+
+  // Tools
+  { key: 'git', name: 'Git', category: 'Tools' },
+  { key: 'maven', name: 'Maven', category: 'Tools' },
+  { key: 'npm', name: 'npm', category: 'Tools' },
+  { key: 'postman', name: 'Postman', category: 'Tools' },
+  { key: 'junit5', name: 'JUnit5', category: 'Tools' },
+  { key: 'mockito', name: 'Mockito', category: 'Tools' }
 ];
 
 const experience = [
@@ -29,7 +64,16 @@ const experience = [
   },
 ];
 
+const categories = ['All', 'Frontend', 'Backend', 'DevOps', 'Tools'];
+
 export default function AboutPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredSkills =
+    selectedCategory === 'All'
+      ? skills
+      : skills.filter((skill) => skill.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 px-6 py-16">
       <section className="max-w-3xl mx-auto space-y-16">
@@ -70,13 +114,32 @@ export default function AboutPage() {
         {/* Skills */}
         <section>
           <h2 className="text-3xl font-semibold mb-6 text-red-600">Skills & Tools</h2>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {skills.map((skill) => (
-              <li
-                key={skill}
-                className="px-4 py-2 bg-red-50 text-red-800 rounded-lg shadow-sm text-center font-medium border border-red-200"
+
+          {/* Tabs */}
+          <div className="flex flex-wrap gap-3 mb-6">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-1.5 mx-2 rounded-lg cursor-pointer text-md font-medium border transition
+                  ${selectedCategory === cat
+                    ? 'bg-red-600 text-white border-red-600'
+                    : 'bg-white text-red-600 border-2 border-red-600 hover:bg-red-100'
+                  }`}
               >
-                {skill}
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Skill List */}
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {filteredSkills.map((skill) => (
+              <li
+                key={skill.key}
+                className="px-4 py-3 bg-red-50 text-red-800 rounded-lg shadow-sm text-center font-medium border border-red-200 cursor-pointer transition duration-200 hover:-translate-y-1 hover:shadow-md"
+              >
+                {skill.name}
               </li>
             ))}
           </ul>
